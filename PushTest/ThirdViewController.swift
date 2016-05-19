@@ -10,9 +10,22 @@ import UIKit
 
 class ThirdViewController: UIViewController {
 
+    var textVal : String = ""
+    
+    @IBOutlet weak var myLabel: UILabel!
+    
+    @IBAction func send(sender: AnyObject) {
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("HELLO", object: nil)
+        
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        
         // Do any additional setup after loading the view.
     }
 

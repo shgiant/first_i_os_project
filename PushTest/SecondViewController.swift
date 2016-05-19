@@ -9,14 +9,41 @@
 import UIKit
 
 class SecondViewController: UIViewController {
+    
+    var switchVal : Bool = false;
+    var textFieldVal : String = "";
 
+    @IBOutlet weak var firstLabel: UILabel!
+    
+    @IBOutlet weak var secondLabel: UILabel!
+    
     @IBAction func nextViewController(sender: AnyObject) {
         
         if let svc = self.storyboard?.instantiateViewControllerWithIdentifier("thirdView"){
             self.navigationController?.pushViewController(svc, animated: true)
+            
+            let tvc = svc as! ThirdViewController
+            tvc.textVal = "TEST"
         }
         
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        print("viewWillAppear")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        print("viewDidAppear")
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        print("viewWillDisappear")
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        print("viewDidDisappear")
+    }
+    
     
     @IBAction func nextViewBySegue(sender: AnyObject) {
         performSegueWithIdentifier("thirdSegue", sender: self)
@@ -25,6 +52,14 @@ class SecondViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        firstLabel.text = textFieldVal
+        
+        if switchVal == true {
+            secondLabel.text = "true"
+        } else {
+            secondLabel.text = "false"
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -44,5 +79,7 @@ class SecondViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    //
 
 }
